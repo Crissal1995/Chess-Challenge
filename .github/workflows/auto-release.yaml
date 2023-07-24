@@ -5,6 +5,7 @@ on:
   pull_request:
     branches:
       - main
+      - develop
 
 jobs:
   auto-release:
@@ -24,7 +25,7 @@ jobs:
         run: |
           python python/get-version.py
       - name: Create release if PR is merged
-        if: github.event.pull_request.merged == true
+        if: (github.event.pull_request.merged == true) && (github.head_ref == 'main')
         env:
           VERSION: ${{ steps.get-version.outputs.version }}
         run: |
