@@ -5,6 +5,10 @@ on:
     branches: 
       - main
       - develop
+    paths:
+      - '*.cs'
+      - '*.sln'
+      - '*.csproj'
 
 jobs:
   build:
